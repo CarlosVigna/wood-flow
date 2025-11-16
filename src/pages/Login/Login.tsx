@@ -1,29 +1,32 @@
 import React, { useState } from "react";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
-import { login } from "../../services/auth";
 import styles from "./Login.module.css";
 
-export default function Login() {
+interface LoginProps {
+  onLoginSuccess: () => void;
+}
+
+export default function Login({ onLoginSuccess }: LoginProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault(); // previne o reload da página
     setLoading(true);
     setError("");
 
-    try {
-      const response = await login(email, password);
-      console.log("Login bem-sucedido:", response);
-      alert("Login feito com sucesso! Token: " + response.token);
-    } catch (err: any) {
-      setError(err.message);
-    } finally {
+    // login fixo para teste
+    setTimeout(() => {
+      if (email === "carlos@carlos" && password === "1234") {
+        onLoginSuccess(); // chama callback do App para ir para Dashboard
+      } else {
+        setError("Usuário ou senha incorretos!");
+      }
       setLoading(false);
-    }
+    }, 500); // simula delay de rede
   };
 
   return (

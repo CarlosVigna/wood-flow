@@ -1,35 +1,29 @@
+
 .inputContainer {
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px;
+  margin-bottom: 16px; /* espaço entre inputs */
   width: 100%;
+  max-width: 400px; /* opcional, para inputs grandes */
 }
 
-.input {
-  width: 100%;
-  height: 48px;       /* força altura do input */
-  padding: 0 16px;    /* padding horizontal só */
-  font-size: 16px;
-  border-radius: 6px;
+.inputContainer label {
+  margin-bottom: 6px;
+  font-weight: 500;
+  font-size: 14px;
+  color: #333;
+}
+
+.inputContainer input {
+  padding: 10px 12px;
   border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
   outline: none;
-  box-sizing: border-box; /* garante que height inclui padding */
-  transition: border 0.3s;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.label {
-  margin-bottom: 5px;
-  font-weight: bold;
+.inputContainer input:focus {
+  border-color: #2E7D32; /* verde semelhante ao botão que você usou */
+  box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.2);
 }
-
-.form {
-  display: flex;
-  flex-direction: column;
-  width: 300px;
-  gap: 15px;
-  /* REMOVA qualquer height fixo se tiver */
-}
-.input:focus {
-  border-color: #66BB6A; /* muda a cor ao focar */
-}
-

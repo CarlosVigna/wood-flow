@@ -1,6 +1,17 @@
-//import React from "react";
+import React, { useState } from "react";
 import Login from "./pages/Login/Login";
+import Dashboard from "./pages/Dashboard/Dashboard";
 
 export default function App() {
-  return <Login />;
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  return (
+    <>
+      {isLoggedIn ? (
+        <Dashboard />
+      ) : (
+        <Login onLoginSuccess={() => setIsLoggedIn(true)} />
+      )}
+    </>
+  );
 }
